@@ -2,7 +2,7 @@
     {"note" : "A", "time": 0},
     {"note" : "W", "time": 2},
     {"note" : "D", "time": 4},
-    {"note" : "S", "time": 6},
+    {"note" : "Space", "time": 6},
     {"note" : "J", "time": 8},
     {"note" : "I", "time": 10},
     {"note" : "L", "time": 12},

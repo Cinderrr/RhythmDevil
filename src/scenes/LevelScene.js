@@ -1,13 +1,14 @@
 //import Music from '../components/Music.js'
 import metronomeSheet from '../assets/noteSheet.json'
 
-export default class PreloadScene extends Phaser.Scene {
+export default class LevelScene extends Phaser.Scene {
 	constructor() {
 		super({key: 'LevelScene'});
 	}
 
     create()
     {
+        this.playerHealth = 50;
         this.noteCount = 0;
         this.currentCount = 0;
         this.currentSheet = this.createNotes();
@@ -52,53 +53,177 @@ export default class PreloadScene extends Phaser.Scene {
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap");
+                console.log("End Tap A");
             }
             else if (timing < -0.5)
             {
-                console.log("Negative");
+                console.log("Negative A");
             }
-            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) && (timing - this.currentSheet[this.currentCount].time) <= 0.3)
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                             this.currentSheet[this.currentCount].note == "A")
             {
-                console.log("Good");
+                console.log("Good A");
+                this.playerHealth += 5;
                 this.currentCount++;
             }
             else
             {
-                console.log("Bad");
+                console.log("Bad A");
+                this.playerHealth -= 2;
             }
         }
         this.keyPositions[1].setAlpha((this.keys.W.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.W))
         {
-            console.log("W");
-            
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap W");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative W");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "W")
+            {
+                console.log("Good W");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad W");
+                this.playerHealth -= 2;
+            }     
         }
         this.keyPositions[2].setAlpha((this.keys.D.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.D))
         {
-            console.log("D");
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap D");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative D");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "D")
+            {
+                console.log("Good D");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad D");
+                this.playerHealth -= 2;
+            }
         }
         this.keyPositions[3].setAlpha((this.keys.SPACE.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.SPACE))
         {
-            console.log("Space");
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap Space");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative Space");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "Space")
+            {
+                console.log("Good Space");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad Space");
+                this.playerHealth -= 2;
+            }
         }
         this.keyPositions[4].setAlpha((this.keys.J.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.J))
         {
-            console.log("J");
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap J");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative J");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "J")
+            {
+                console.log("Good J");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad J");
+                this.playerHealth -= 2;
+            }
         }
         this.keyPositions[5].setAlpha((this.keys.I.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.I))
         {
-            console.log("I");
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap I");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative I");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "I")
+            {
+                console.log("Good I");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad I");
+                this.playerHealth -= 2;
+            }
         }
         this.keyPositions[6].setAlpha((this.keys.L.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.L))
         {
-            console.log("L");
+            if (!this.currentSheet[this.currentCount])
+            {
+                console.log("End Tap L");
+            }
+            else if (timing < -0.5)
+            {
+                console.log("Negative L");
+            }
+            else if (-0.3 <= (timing - this.currentSheet[this.currentCount].time) &&
+                                (timing - this.currentSheet[this.currentCount].time) <= 0.3 &&
+                                this.currentSheet[this.currentCount].note == "L")
+            {
+                console.log("Good L");
+                this.playerHealth += 5;
+                this.currentCount++;
+            }
+            else
+            {
+                console.log("Bad L");
+                this.playerHealth -= 2;
+            }
         }
+        this.healthCheck();
     }
 
     createNotes()
@@ -109,6 +234,7 @@ export default class PreloadScene extends Phaser.Scene {
             var position;
             var timeline;
             var time = (element.time);
+            var note = (element.note);
 
             switch(element.note)
             {
@@ -169,7 +295,7 @@ export default class PreloadScene extends Phaser.Scene {
                         ease: 'Linear'
                     });
                     break;
-                case "S":
+                case "Space":
                     position = this.add.rectangle(500, -50, 300, 100, 0x6666ff);
                     position.setStrokeStyle(3, 0xFF0000);
                     timeline = this.tweens.createTimeline({  })
@@ -246,7 +372,7 @@ export default class PreloadScene extends Phaser.Scene {
                     });
                     break;
             }
-            sheet.push({position, timeline, time})
+            sheet.push({position, timeline, time, note})
         });
         return sheet;
     }
@@ -269,11 +395,28 @@ export default class PreloadScene extends Phaser.Scene {
         if(!this.currentSheet[this.currentCount])
         {
             //console.log("End of song")
+            this.scene.start("WinScene");
         }  
         else if (timing >= this.currentSheet[this.currentCount].time + .5)
         {
             console.log("Missed note: " + timing);
+            this.playerHealth -= 10;
             this.currentCount++;
+        }
+    }
+
+    healthCheck()
+    {
+        if (this.playerHealth <= 0)
+        {
+            console.log("Lose");
+            this.playerHealth = 0;
+            this.scene.start("LoseScene");
+        }
+        else if (this.playerHealth > 100)
+        {
+            console.log(this.playerHealth);
+            this.playerHealth = 100;
         }
     }
 }
