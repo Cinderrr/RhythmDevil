@@ -9,6 +9,7 @@ export default class LevelScene extends Phaser.Scene {
     create()
     {
         this.playerHealth = 50;
+        this.visualHealth = this.playerHealth;
         this.noteCount = 0;
         this.currentCount = 0;
         this.currentSheet = this.createNotes();
@@ -39,6 +40,9 @@ export default class LevelScene extends Phaser.Scene {
         this.keyPositions[5] = this.add.rectangle(830, 600, 100, 100, 0x6666ff);
         this.keyPositions[6] = this.add.rectangle(940, 600, 100, 100, 0x6666ff);
 
+        //this.healthBar = this.add.rectangle(500, 700, 500, 50, 0x2dff2d);
+        this.healthBar = this.add.graphics();
+
         this.currentMusic.play()    
     }
 
@@ -47,6 +51,9 @@ export default class LevelScene extends Phaser.Scene {
         var timing = ((this.currentMusic.getCurrentTime()) / (60 / 120) - 8); // - 8 is the offeset
         this.playNote();
         this.checkNote(timing);
+//        this.updateVisHeatlth();
+
+
 
         this.keyPositions[0].setAlpha((this.keys.A.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.A))
@@ -226,6 +233,10 @@ export default class LevelScene extends Phaser.Scene {
         this.healthCheck();
     }
 
+    addEvent(delay, callback, callbackScope=this) {
+		return this.time.addEvent({delay, callback, callbackScope});
+	}
+
     createNotes()
     {
         var sheet = [];
@@ -395,7 +406,11 @@ export default class LevelScene extends Phaser.Scene {
         if(!this.currentSheet[this.currentCount])
         {
             //console.log("End of song")
-            this.scene.start("WinScene");
+            this.cameras.main.fadeEffect.start(true, 2000, 0x11, 0x11, 0x11);
+            this.addEvent(2000, function() {
+                this.currentMusic.stop();
+                this.scene.start("WinScene");
+            });
         }  
         else if (timing >= this.currentSheet[this.currentCount].time + .5)
         {
@@ -405,18 +420,46 @@ export default class LevelScene extends Phaser.Scene {
         }
     }
 
+
+    updateVisHeatlth()
+    {
+        this.healthBar.clear()
+        this.healthBar.fillStyle(0x2dff2d);
+        this.healthBar.fillRect(0, 675, this.visualHealth * 10, 50);
+    }
+
     healthCheck()
     {
         if (this.playerHealth <= 0)
         {
             console.log("Lose");
             this.playerHealth = 0;
-            this.scene.start("LoseScene");
+            
+            this.cameras.main.fadeEffect.start(true, 2000, 0x11, 0x11, 0x11);
+            this.addEvent(2000, function() {
+                this.currentMusic.stop();
+                this.scene.start("LoseScene");
+            });
         }
         else if (this.playerHealth > 100)
         {
             console.log(this.playerHealth);
             this.playerHealth = 100;
         }
+        else
+        {
+            if (this.playerHealth != this.visualHealth)
+            {
+                if (this.playerHealth > this.visualHealth)
+                {
+                    this.visualHealth += 0.25;
+                }
+                else
+                {
+                    this.visualHealth -= 0.25;
+                }
+            }
+        }
+        this.updateVisHeatlth();
     }
 }
