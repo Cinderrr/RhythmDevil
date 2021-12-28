@@ -1,0 +1,14 @@
+{
+    "tutorial": [
+                    "So you want to win the big drum off, huh?...",
+                    "First, let's see if you can even play the drums.",
+                    "When a note comes down hit the corresponding pad.",
+                    "Easy. Think you can do that?"
+                ],
+    "first": [
+                "Alright. Guess you can play.",
+                "I won't stop you. But be warned...",
+                "The audience ams a fickles mistress.",
+                "(The bar on the bottom of the screen acts as audience engagement)"
+             ]
+}

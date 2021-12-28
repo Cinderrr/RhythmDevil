@@ -20,7 +20,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     create()
     {
-            this.scene.start("LevelScene");
+            this.scene.start("TutorialTextScene");
     }
 
     update(time, delta)

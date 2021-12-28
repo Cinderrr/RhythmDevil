@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
 import PreloadScene from "./scenes/PreloadScene.js"
-import LevelScene from "./scenes/LevelScene.js"
+import TutorialTextScene from "./scenes/TutorialTextScene"
+import TutorialScene from "./scenes/TutorialScene"
+import FirstTextScene from './scenes/FirestTextScene.js';
+import FirstLevelScene from "./scenes/FirstLevelScene.js"
 import LoseScene from "./scenes/LoseScene.js"
-import WinScene from './scenes/WinScene.js';
+import WinScene from "./scenes/WinScene.js"
 
 const config = {
     type: Phaser.AUTO,
@@ -12,7 +15,10 @@ const config = {
     parent: 'phaser-example',
     scene: [
         PreloadScene,
-        LevelScene,
+        TutorialTextScene,
+        TutorialScene,
+        FirstTextScene,
+        FirstLevelScene,
         WinScene,
         LoseScene
     ]
