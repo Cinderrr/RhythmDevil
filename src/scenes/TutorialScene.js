@@ -53,9 +53,6 @@ export default class TutorialScene extends Phaser.Scene {
     update()
     {
         var timing = ((this.currentMusic.getCurrentTime()) / (60 / 120) - 8); // - 8 is the offeset
-        if (timing < 0)
-            console.log("Timing: " + timing)
-
         this.playNote();
         this.checkNote(timing);
 
@@ -66,18 +63,15 @@ export default class TutorialScene extends Phaser.Scene {
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap A");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative A");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                             (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
                              this.currentSheet[this.currentCount].note == "A")
             {
-                console.log("Good A");
-                this.keyRegister[0].setText("Good!");
+                this.keyRegister[0].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[0].setText("");
                 });
@@ -85,9 +79,56 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "A")
+            {
+                this.keyRegister[0].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[0].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "A")
+            {
+                this.keyRegister[0].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[0].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "A")
+            {
+                this.keyRegister[0].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[0].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "A")
+            {
+                this.keyRegister[0].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[0].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad A");
                 this.keyRegister[0].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[0].setText("");
@@ -99,18 +140,15 @@ export default class TutorialScene extends Phaser.Scene {
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap W");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative W");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "W")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "W")
             {
-                console.log("Good W");
-                this.keyRegister[1].setText("Good!");
+                this.keyRegister[1].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[1].setText("");
                 });
@@ -118,9 +156,56 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "W")
+            {
+                this.keyRegister[1].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[1].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "W")
+            {
+                this.keyRegister[1].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[1].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "W")
+            {
+                this.keyRegister[1].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[1].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "W")
+            {
+                this.keyRegister[1].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[1].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad W");
                 this.keyRegister[1].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[1].setText("");
@@ -132,18 +217,15 @@ export default class TutorialScene extends Phaser.Scene {
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap D");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative D");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "D")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "D")
             {
-                console.log("Good D");
-                this.keyRegister[2].setText("Good!");
+                this.keyRegister[2].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[2].setText("");
                 });
@@ -151,32 +233,76 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "D")
+            {
+                this.keyRegister[2].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[2].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "D")
+            {
+                this.keyRegister[2].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[2].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "D")
+            {
+                this.keyRegister[2].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[2].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "D")
+            {
+                this.keyRegister[2].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[2].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad D");
                 this.keyRegister[2].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[2].setText("");
                 });
-            }
+            } 
         }
         this.keyPositions[3].setAlpha((this.keys.SPACE.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.SPACE))
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap Space");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative Space");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "Space")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "Space")
             {
-                console.log("Good Space");
-                this.keyRegister[3].setText("Good!");
+                this.keyRegister[3].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[3].setText("");
                 });
@@ -184,32 +310,76 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "Space")
+            {
+                this.keyRegister[3].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[3].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "Space")
+            {
+                this.keyRegister[3].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[3].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "Space")
+            {
+                this.keyRegister[3].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[3].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "Space")
+            {
+                this.keyRegister[3].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[3].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad Space");
                 this.keyRegister[3].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[3].setText("");
                 });
-            }
+            } 
         }
         this.keyPositions[4].setAlpha((this.keys.J.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.J))
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap J");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative J");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "J")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "J")
             {
-                console.log("Good J");
-                this.keyRegister[4].setText("Good!");
+                this.keyRegister[4].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[4].setText("");
                 });
@@ -217,32 +387,76 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "J")
+            {
+                this.keyRegister[4].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[4].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "J")
+            {
+                this.keyRegister[4].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[4].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "J")
+            {
+                this.keyRegister[4].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[4].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "J")
+            {
+                this.keyRegister[4].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[4].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad J");
                 this.keyRegister[4].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[4].setText("");
                 });
-            }
+            } 
         }
         this.keyPositions[5].setAlpha((this.keys.I.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.I))
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap I");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative I");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "I")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "I")
             {
-                console.log("Good I");
-                this.keyRegister[5].setText("Good!");
+                this.keyRegister[5].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[5].setText("");
                 });
@@ -250,32 +464,76 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "I")
+            {
+                this.keyRegister[5].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[5].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "I")
+            {
+                this.keyRegister[5].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[5].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "I")
+            {
+                this.keyRegister[5].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[5].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "I")
+            {
+                this.keyRegister[5].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[5].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad I");
                 this.keyRegister[5].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[5].setText("");
                 });
-            }
+            } 
         }
         this.keyPositions[6].setAlpha((this.keys.L.isDown) ? 1 : 0.2);
         if(Phaser.Input.Keyboard.JustDown(this.keys.L))
         {
             if (!this.currentSheet[this.currentCount])
             {
-                console.log("End Tap L");
             }
-            else if (timing < -0.5)
+            else if (timing < -0.4)
             {
-                console.log("Negative L");
             }
-            else if (-0.5 <= (timing - this.currentSheet[this.currentCount].time) &&
-                                (timing - this.currentSheet[this.currentCount].time) <= 0.5 &&
-                                this.currentSheet[this.currentCount].note == "L")
+            else if (-0.4 <= (timing - this.currentSheet[this.currentCount].time) &&
+                             (timing - this.currentSheet[this.currentCount].time) < -0.25 &&
+                             this.currentSheet[this.currentCount].note == "L")
             {
-                console.log("Good L");
-                this.keyRegister[6].setText("Good!");
+                this.keyRegister[6].setText("Ok");
                 this.addEvent(500, function() {
                     this.keyRegister[6].setText("");
                 });
@@ -283,14 +541,61 @@ export default class TutorialScene extends Phaser.Scene {
                 this.currentCount++;
                 this.didGood++;
             }
+            else if (-0.25 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) < -0.1 &&
+            this.currentSheet[this.currentCount].note == "L")
+            {
+                this.keyRegister[6].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[6].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (-0.1 <= (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.1 &&
+            this.currentSheet[this.currentCount].note == "L")
+            {
+                this.keyRegister[6].setText("Perfect!");
+                this.addEvent(500, function() {
+                this.keyRegister[6].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.1 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.25 &&
+            this.currentSheet[this.currentCount].note == "L")
+            {
+                this.keyRegister[6].setText("Good!");
+                this.addEvent(500, function() {
+                this.keyRegister[6].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
+            else if (0.25 < (timing - this.currentSheet[this.currentCount].time) &&
+            (timing - this.currentSheet[this.currentCount].time) <= 0.4 &&
+            this.currentSheet[this.currentCount].note == "L")
+            {
+                this.keyRegister[6].setText("Ok!");
+                this.addEvent(500, function() {
+                this.keyRegister[6].setText("");
+                });
+                this.currentSheet[this.currentCount].position.destroy();
+                this.currentCount++;
+                this.didGood++;
+            }
             else
             {
-                console.log("Bad L");
                 this.keyRegister[6].setText("Bad!");
                 this.addEvent(500, function() {
                     this.keyRegister[6].setText("");
                 });
-            }
+            } 
         }
     }
 
@@ -317,14 +622,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -336,14 +641,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -355,14 +660,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -374,14 +679,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -393,14 +698,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -412,14 +717,14 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
@@ -431,20 +736,21 @@ export default class TutorialScene extends Phaser.Scene {
             
                     timeline.add({
                         targets: position,
-                        y: 550,
+                        y: 575,
                         duration: 2000,
                         ease: 'Linear'
                     });
 
                     timeline.add({
                         targets: position,
-                        y: 1150,
+                        y: 1175,
                         duration: 1500,
                         ease: 'Linear'
                     });
                     break;
             }
-            sheet.push({position, timeline, time, note})
+            sheet.push({position, timeline, time, note});
+            console.log(sheet)
         });
         return sheet;
     }
@@ -464,7 +770,7 @@ export default class TutorialScene extends Phaser.Scene {
 
     checkNote(timing)
     {
-        if(!this.currentSheet[this.currentCount] && this.didGood >= 5)
+        if(!this.currentSheet[this.currentCount] && this.didGood >= 0)
         {
             this.currentMusic.stop();
             this.cameras.main.fadeEffect.start(true, 2000, 0x11, 0x11, 0x11);
